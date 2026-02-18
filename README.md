@@ -1,48 +1,138 @@
-# CostPulse - AI Cost Tracker & Analytics Widget
+CostPulse
+Real-Time AI API Cost Intelligence for Windows
 
-CostPulse is a modern, lightweight Windows desktop widget for tracking AI usage costs in real-time. Designed with a focus on **Professional Engineering**, **Modular Architecture**, and **Modern WPF/MVVM development**, it seamlessly integrates with your clipboard and log files to provide instant cost insights for LLM usage (OpenAI, Anthropic, etc.).
+CostPulse is a professional Windows desktop widget built for AI-native companies, SaaS founders, and developers who need instant visibility into LLM spending.
 
-## 🚀 Features
+It transforms raw usage data from OpenAI, Anthropic, and other AI providers into structured, real-time cost intelligence — directly on your desktop.
 
-- **Real-Time Cost Tracking**: Instantly detects AI usage from clipboard (JSON responses) and log files.
-- **Portfolio Mode**: Pro features enabled by default for demonstration (Analytics, Licensing bypass).
-- **Log Import Service**: Watches local log directories (`.log`, `.txt`, `.json`, `.jsonl`), parses usage data, and persists state across restarts.
-- **Analytics Dashboard**: Visualize spending trends with daily/monthly charts and model breakdowns.
-- **Mock Cloud Sync**: Demonstrates a cloud-ready architecture with local mock synchronization.
-- **Smart Deduplication**: Prevents duplicate entries using content hashing.
+No dashboards.
+No browser tabs.
+No manual exports.
 
-## 🛠️ Architecture & Tech Stack
+Just live AI spend awareness.
 
-- **Framework**: .NET 8 (WPF)
-- **Pattern**: MVVM (Model-View-ViewModel) with `ServiceContainer` for Dependency Injection.
-- **Testing**: xUnit with comprehensive coverage for Pricing and Parsing logic.
-- **Data Persistence**: JSON-based local storage with robust error handling.
-- **Services**:
-  - `ClipboardMonitorService`: Background monitoring of clipboard content.
-  - `LogImportService`: FileSystemWatcher implementation with offset persistence.
-  - `ICloudSyncService`: Interface-based design for future backend integration.
+🎯 Who It’s For
 
-### Deployment
+AI SaaS founders monitoring API burn
 
-- **Single-File Publish**: Packaged as a standalone `.exe` with no external dependencies required.
+Automation agencies managing client usage
 
-## 📸 Screenshots
+Developers building AI-powered products
 
-*(Placeholder for screenshots of Widget, Analytics Dashboard, and Settings)*
+Startups optimizing LLM infrastructure costs
 
-## 🗺️ Roadmap
+⚡ Core Capabilities
+Real-Time Cost Detection
 
-- [x] Phase 1: Core Tracking & Widget
-- [x] Phase 2: Analytics & Log Import (Current Release)
-- [ ] Phase 3: Real User Authentication & SaaS Licensing
-- [ ] Phase 4: Full Cloud Integration (REST API)
+Automatically parses AI usage data from:
 
-## 📦 How to Run
+Clipboard JSON responses
 
-1. Download the latest Release.
-2. Run `CostPulse.exe`.
-3. The widget will appear in the bottom-right corner.
-4. Copy any OpenAI/Anthropic JSON usage block to your clipboard to see it tracked!
-5. Right-click the system tray icon to access Analytics and Settings.
+Log files (.log, .json, .jsonl, .txt)
 
-**Note**: This version runs in **Portfolio Mode**, meaning all Pro features are unlocked for evaluation purposes.
+Intelligent Deduplication
+
+Prevents duplicate cost entries using content hashing and offset persistence.
+
+Persistent Usage Tracking
+
+Stores usage locally with crash-safe JSON state management.
+
+Analytics Dashboard
+
+Daily and monthly spending breakdowns
+
+Model-level cost distribution
+
+Usage trend visualization
+
+Tray-Based Minimal UI
+
+Runs silently in the system tray with instant access to:
+
+Analytics
+
+Settings
+
+Import controls
+
+🏗 Architecture
+
+Built with production-level engineering standards.
+
+Framework: .NET 8 (WPF)
+
+Pattern: MVVM
+
+Dependency Management: ServiceContainer-based DI
+
+Testing: xUnit (pricing & parsing logic)
+
+Persistence: JSON-based state storage
+
+Modular Services:
+
+ClipboardMonitorService
+
+LogImportService
+
+PricingService
+
+CloudSync Abstraction Layer
+
+Clean separation of UI, business logic, and infrastructure.
+
+🔐 Security & Privacy
+
+Runs fully locally
+
+No API keys stored
+
+No external telemetry
+
+No cloud dependency
+
+Your usage data stays on your machine.
+
+🚀 Deployment
+
+Published as a standalone Windows executable:
+
+Single-file build
+
+No external runtime installation required
+
+Lightweight and background-optimized
+
+🛣 Product Roadmap
+
+Phase 1 — Desktop Intelligence (Complete)
+Core tracking + analytics
+
+Phase 2 — API-Native Cost Monitoring
+Direct API integrations for real-time usage sync
+
+Phase 3 — SaaS Layer
+
+Secure authentication
+
+Team accounts
+
+Usage limits & alerts
+
+Subscription billing
+
+Phase 4 — Cloud Dashboard
+
+Cross-device sync
+
+Cost forecasting
+
+Multi-provider aggregation
+
+💡 Vision
+
+CostPulse is evolving into a cross-platform AI cost intelligence platform — giving AI-native businesses financial visibility at the infrastructure layer.
+
+Because if you build with AI,
+you must understand your burn rate in real time.
