@@ -1,0 +1,11 @@
+bin/
+obj/
+*.user
+*.suo
+*.log
+.vs/
+*.db
+*.cache
+build_*.txt
+*_error.txt
+errors.txt

@@ -1,0 +1,130 @@
+<Window x:Class="CostPulse.Views.AnalyticsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CostPulse.Views"
+        mc:Ignorable="d"
+        Title="CostPulse Analytics" Height="550" Width="700"
+        WindowStartupLocation="CenterScreen"
+        Background="#1E1E1E" Foreground="White"
+        ResizeMode="NoResize" WindowStyle="ToolWindow">
+    
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid Margin="0,0,0,20">
+            <TextBlock Text="Analytics Dashboard" FontSize="20" FontWeight="Bold" Foreground="#44FF44" VerticalAlignment="Center"/>
+            <ComboBox x:Name="ComboTimeRange" HorizontalAlignment="Right" Width="120" VerticalAlignment="Center"
+                      SelectedValue="{Binding SelectedTimeRange, Mode=TwoWay}"/>
+        </Grid>
+
+        <!-- Summary Cards -->
+        <Grid Grid.Row="1" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Total Cost -->
+            <Border Background="#333" CornerRadius="8" Padding="15" Margin="0,0,5,0">
+                <StackPanel>
+                    <TextBlock Text="TOTAL COST" FontSize="11" Opacity="0.6"/>
+                    <TextBlock Text="{Binding TotalCost, StringFormat={}${0:F2}}" FontSize="20" FontWeight="SemiBold" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Total Tokens -->
+            <Border Grid.Column="1" Background="#333" CornerRadius="8" Padding="15" Margin="5,0,5,0">
+                <StackPanel>
+                    <TextBlock Text="TOTAL TOKENS" FontSize="11" Opacity="0.6"/>
+                    <TextBlock Text="{Binding TotalTokens, StringFormat={}{0:N0}}" FontSize="20" FontWeight="SemiBold" Margin="0,5,0,0" Foreground="#AAAAAA"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Total Requests -->
+            <Border Grid.Column="2" Background="#333" CornerRadius="8" Padding="15" Margin="5,0,0,0">
+                <StackPanel>
+                    <TextBlock Text="REQUESTS" FontSize="11" Opacity="0.6"/>
+                    <TextBlock Text="{Binding TotalRequests, StringFormat={}{0:N0}}" FontSize="20" FontWeight="SemiBold" Margin="0,5,0,0" Foreground="#AAAAAA"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- Chart Section -->
+        <Border Grid.Row="2" Background="#252525" CornerRadius="8" Padding="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Text="Cost Trend" FontSize="12" Opacity="0.6" Margin="0,0,0,10"/>
+                
+                <!-- Canvas for manual drawing -->
+                <Canvas Grid.Row="1" x:Name="ChartCanvas" Background="Transparent" ClipToBounds="True"/>
+            </Grid>
+        </Border>
+
+        <!-- Breakdowns -->
+        <Grid Grid.Row="3" Margin="0,20,0,0">
+             <Grid.ColumnDefinitions>
+                 <ColumnDefinition Width="*"/>
+                 <ColumnDefinition Width="20"/>
+                 <ColumnDefinition Width="*"/>
+             </Grid.ColumnDefinitions>
+
+             <!-- Top Models -->
+             <Grid>
+                 <TextBlock Text="Top Models" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Top"/>
+                 <ItemsControl ItemsSource="{Binding TopModels}" Margin="0,25,0,0">
+                     <ItemsControl.ItemTemplate>
+                         <DataTemplate>
+                             <Grid Margin="0,4">
+                                 <Grid.ColumnDefinitions>
+                                     <ColumnDefinition Width="*"/>
+                                     <ColumnDefinition Width="Auto"/>
+                                 </Grid.ColumnDefinitions>
+                                 <TextBlock Text="{Binding Name}" Foreground="#DDD"/>
+                                 <TextBlock Grid.Column="1" Text="{Binding Cost, StringFormat={}$0.0000}" Foreground="#AAA"/>
+                             </Grid>
+                         </DataTemplate>
+                     </ItemsControl.ItemTemplate>
+                 </ItemsControl>
+             </Grid>
+
+            <!-- Top Providers -->
+            <Grid Grid.Column="2">
+                <TextBlock Text="Top Providers" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Top"/>
+                <ItemsControl ItemsSource="{Binding TopProviders}" Margin="0,25,0,0">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Name}" Foreground="#DDD"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Cost, StringFormat={}$0.00}" Foreground="#AAA"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>
